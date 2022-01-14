@@ -28,8 +28,8 @@ settings = Dynaconf(
 # -- Lets add some Validation and Defaults
 settings.validators.register(
     # Must there be a NAME defined
-    # under [development] env (run mode) the name should be equal to "Bruno"
-    Validator("NAME", must_exist=True, eq="Bruno", env="development"),
+    # under [development] env (run mode) the name should be equal to "bayan"
+    Validator("NAME", must_exist=True, eq="bayan", env="development"),
     # under [production] the name should be equal to "Root"
     Validator("NAME", must_exist=True, eq="Root", env="production"),
     # there must be a DB dictionary, having a PORT as integer
