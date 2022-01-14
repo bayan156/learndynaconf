@@ -28,24 +28,24 @@ settings = Dynaconf(
 # -- Lets add some Validation and Defaults
 settings.validators.register(
     # Must there be a NAME defined
-    # under [development] env (run mode) the name should be equal to "Bruno"
-    Validator("NAME", must_exist=True, eq="Bruno", env="development"),
+    # under [development] env (run mode) the name should be equal to "bayan"
+    Validator("NAME", must_exist=True, eq="Bayan", env="development"),
     # under [production] the name should be equal to "Root"
     Validator("NAME", must_exist=True, eq="Root", env="production"),
     # there must be a DB dictionary, having a PORT as integer
     Validator("DB.PORT", must_exist=True, is_type_of=int),
-    # under the env [production] its value must be >=8000 and <=9000
-    Validator("DB.PORT",gte=8000, lte=9000, env="production"),
+    # under the env [production] its value must be >=10000 and <=20000
+    Validator("DB.PORT",gte=10000, lte=20000, env="production"),
 
     # Defaults can also be provided here (however in the [default] section of files is better)
-    Validator("DB.USER", default="admin"),
+    Validator("DB.USER", default="dmin"),
     Validator("FACTOR", default=8),
 
     # Defaults can also be used to define computed values if default=a_callable
     Validator("DB.TIMEOUT", default=lambda _settings, _value: 24 * 60 * _settings.factor),
 
     # You can compound validators for better meaning
-    Validator("DB.USER", ne="pgadmin") & Validator("DB.USER", ne="master"),
+    Validator("DB.USER", ne="pgdmin") & Validator("DB.USER", ne="master"),
 
     # You can validate a key ONLY IF other exits
     # Password must be defined if user is defined
